@@ -1,0 +1,116 @@
+/* Layout με Grid */
+.container {
+    display: grid;
+    grid-template-areas: 
+        "header header"
+        "nav nav"
+        "aside main"
+        "footer footer";
+    grid-template-columns: 250px 1fr;
+    grid-template-rows: auto auto 1fr auto;
+    min-height: 100vh;
+    gap: 10px;
+}
+
+header { grid-area: header; background: #333; color: rgb(0, 0, 0); padding: 20px; text-align: center; }
+nav { grid-area: nav; background: #333; overflow: hidden; }
+aside { grid-area: aside; background: #333 hwb(278 28% 65%); padding: 15px; }
+main { grid-area: main; padding: 20px; background: #5b6979; }
+footer { grid-area: footer; background: #ffffff; color: rgb(66, 65, 65); text-align: center; padding: 10px; }
+
+/* Μενού με Float (όπως ζητάει η εργασία) */
+.nav-menu { list-style: none; margin: 0; padding: 0; }
+.nav-menu li { float: left; }
+.nav-menu li a { 
+    display: block; 
+    color: white; 
+    padding: 14px 20px; 
+    text-decoration: none; 
+}
+
+/* Κλάση για απόκρυψη */
+.hidden { display: none; }
+
+/* Responsive για κινητά */
+@media (max-width: 600px) {
+    .container {
+        grid-template-areas: 
+            "header"
+            "nav"
+            "aside"
+            "main"
+            "footer";
+        grid-template-columns: 1fr;
+    }
+} 
+
+/* Flexbox για τις φωτογραφίες */
+.photo-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    padding: 20px;
+}
+
+.photo-item {
+    flex: 1 1 300px; /* Οι φωτογραφίες θα προσαρμόζονται */
+    max-width: 400px;
+    border: 2px solid #ddd;
+    text-align: center;
+    padding: 10px;
+}
+
+.photo-item img {
+    width: 100%;
+    height: auto;
+}
+
+/* --- Media Queries για Tablet --- */
+@media (max-width: 992px) {
+    .container {
+        grid-template-columns: 200px 1fr; /* Μικραίνουμε το πλευρικό μενού */
+    }
+}
+
+/* --- Media Queries για Κινητά --- */
+@media (max-width: 600px) {
+    .container {
+        grid-template-areas: 
+            "header"
+            "nav"
+            "aside"
+            "main"
+            "footer";
+        grid-template-columns: 1fr; /* Όλα σε μία στήλη */
+    }
+
+    .nav-menu li {
+        float: none; /* Το μενού γίνεται κάθετο */
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid #555;
+    }
+
+    aside {
+        border-bottom: 2px solid #ddd;
+    }
+}
+
+/* Στυλ για τον Πίνακα Δεδομένων */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.data-table th, .data-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+.data-table th {
+    background-color: #333;
+    color: white;
+}

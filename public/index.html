@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Βιογραφία Αθλητή - SPA</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        
+        <header>
+            <h1>Μίλτος Τεντόγλου</h1>
+        </header>
+
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="#" onclick="showSection('bio')">Βιογραφία</a></li>
+                <li><a href="#" onclick="showSection('photos')">Φωτογραφίες</a></li>
+                <li><a href="#" onclick="showSection('awards')">Διακρίσεις</a></li>
+                <li><a href="#" onclick="showSection('links')">Σύνδεσμοι</a></li>
+                <li><a href="#" onclick="showSection('admin')">Διαχείριση</a></li>
+            </ul>
+        </nav>
+
+        <aside id="sidebar">
+            <div id="sub-bio" class="aside-content">
+                <h3>Στοιχεία</h3>
+                <p>Γενικά</p>
+                <p>Καριέρα</p>
+            </div>
+            
+            <div id="sub-photos" class="aside-content hidden">
+                <h3>Κατηγορίες</h3>
+                <p>Αγώνες</p>
+                <p>Προπόνηση</p>
+            </div>
+
+            <div id="sub-awards" class="aside-content hidden">
+                <h3>Πληροφορίες</h3>
+                <p>Ολυμπιακοί</p>
+                <p>Παγκόσμια</p>
+            </div>
+
+            <div id="sub-links" class="aside-content hidden">
+                <h3>Social Media</h3>
+                <p>Instagram</p>
+                <p>YouTube</p>
+            </div>
+
+            <div id="sub-admin" class="aside-content hidden">
+                <h3>Admin Panel</h3>
+                <p>Ρυθμίσεις</p>
+            </div>
+        </aside>
+
+        <main id="main-content">
+            <section id="content-area">
+                <h2>Καλώς ήρθατε</h2>
+                <p>Επιλέξτε μια κατηγορία από το μενού για να ξεκινήσετε.</p>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 - Εργασία Ανάπτυξης Διαδικτυακών Εφαρμογών</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
