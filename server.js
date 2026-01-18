@@ -6,7 +6,6 @@ const session = require('express-session');
 const app = express();
 const PORT = 3000;
 
-// --- ΡΥΘΜΙΣΕΙΣ ---
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(session({
@@ -16,10 +15,8 @@ app.use(session({
     cookie: { secure: false } 
 }));
 
-// Σερβίρισμα στατικών αρχείων
 app.use(express.static('public'));
 
-// --- HELPER FUNCTIONS ---
 const getData = (filename) => {
     try {
         const filePath = path.join(__dirname, 'data', filename);
@@ -40,8 +37,7 @@ const saveData = (filename, data) => {
     }
 };
 
-// --- API ROUTES ---
-app.get('/api/achievements', (req, res) => {
+app.get('/api/achievements', (req, res) => {            // api rout
     res.json(getData('achievements.json'));
 });
 
@@ -73,13 +69,10 @@ app.post('/api/logout', (req, res) => {
     res.json({ success: true });
 });
 
-// --- SPA ROUTE (Η ΔΙΟΡΘΩΣΗ) ---
-// Χρησιμοποιούμε RegExp (/.*/) αντί για string ('*') για να μην κρασάρει το Express 5
 app.get(/.*/, (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));    //spa rout
 });
 
-// --- ΕΚΚΙΝΗΣΗ ---
 app.listen(PORT, () => {
     console.log(`Server is running at http://localhost:${PORT}`);
 });

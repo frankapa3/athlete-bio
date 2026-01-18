@@ -1,4 +1,24 @@
-/* Layout με Grid */
+/* --- DARK THEME VARIABLES (Σκοτεινό Θέμα) --- */
+:root {
+    --primary-color: #29b6f6; /* Φωτεινό Γαλάζιο (Electric Blue) */
+    --accent-color: #0288d1;  /* Πιο σκούρο μπλε για hover */
+    --bg-color: #121212;      /* Πολύ σκούρο γκρι (σχεδόν μαύρο) για φόντο */
+    --card-bg: #1e1e1e;       /* Σκούρο γκρι για τις κάρτες/κουτιά */
+    --text-main: #e0e0e0;     /* Ανοιχτό γκρι για κείμενο (για να διαβάζεται) */
+    --text-muted: #b0b0b0;    /* Πιο απαλό γκρι για δευτερεύοντα κείμενα */
+    --shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Πιο έντονη σκιά για το dark mode */
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+/* --- LAYOUT --- */
 .container {
     display: grid;
     grid-template-areas: 
@@ -6,32 +26,233 @@
         "nav nav"
         "aside main"
         "footer footer";
-    grid-template-columns: 250px 1fr;
+    grid-template-columns: 280px 1fr;
     grid-template-rows: auto auto 1fr auto;
     min-height: 100vh;
-    gap: 10px;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
-header { grid-area: header; background: #333; color: rgb(0, 0, 0); padding: 20px; text-align: center; }
-nav { grid-area: nav; background: #333; overflow: hidden; }
-aside { grid-area: aside; background: #333 hwb(278 28% 65%); padding: 15px; }
-main { grid-area: main; padding: 20px; background: #5b6979; }
-footer { grid-area: footer; background: #ffffff; color: rgb(66, 65, 65); text-align: center; padding: 10px; }
+/* --- HEADER --- */
+header { 
+    grid-area: header; 
+    background: var(--card-bg); /* Σκούρο φόντο */
+    color: var(--primary-color); /* Το κείμενο γίνεται μπλε */
+    padding: 30px; 
+    text-align: center; 
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    border: 1px solid #333; /* Λεπτό περίγραμμα για να ξεχωρίζει */
+}
 
-/* Μενού με Float (όπως ζητάει η εργασία) */
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-shadow: 0 0 10px rgba(41, 182, 246, 0.3); /* Λάμψη νέον στο κείμενο */
+}
+
+/* --- NAVIGATION --- */
+nav { 
+    grid-area: nav; 
+    background: var(--card-bg); 
+    border-radius: 15px;
+    overflow: hidden; 
+    box-shadow: var(--shadow);
+    border: 1px solid #333;
+}
+
 .nav-menu { list-style: none; margin: 0; padding: 0; }
 .nav-menu li { float: left; }
 .nav-menu li a { 
     display: block; 
-    color: white; 
-    padding: 14px 20px; 
+    color: var(--text-main); 
+    padding: 16px 24px; 
     text-decoration: none; 
+    font-weight: 600;
+    transition: all 0.3s ease;
 }
 
-/* Κλάση για απόκρυψη */
+.nav-menu li a:hover {
+    background-color: var(--primary-color);
+    color: #121212; /* Μαύρα γράμματα στο hover για αντίθεση */
+    box-shadow: 0 0 15px var(--primary-color); /* Εφέ λάμψης */
+}
+
+/* --- ASIDE & MAIN --- */
+aside { 
+    grid-area: aside; 
+    background: var(--card-bg); 
+    padding: 25px; 
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    border: 1px solid #333;
+    border-left: 4px solid var(--primary-color); /* Μπλε γραμμή αριστερά */
+}
+
+main { 
+    grid-area: main; 
+    background: var(--card-bg); 
+    padding: 30px; 
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    border: 1px solid #333;
+}
+
+h2, h3 {
+    color: var(--primary-color); /* Όλοι οι τίτλοι γίνονται γαλάζιοι */
+}
+
+/* Στυλ για τα στοιχεία του Aside */
+.aside-content h3 {
+    border-bottom: 1px solid #444;
+    padding-bottom: 10px;
+}
+
+.aside-content p {
+    background-color: #252525; /* Λίγο πιο ανοιχτό από το φόντο */
+    padding: 10px;
+    border-radius: 8px;
+    border-left: 3px solid #555;
+    color: var(--text-muted);
+}
+
+/* --- FOOTER --- */
+footer { 
+    grid-area: footer; 
+    background: var(--card-bg); 
+    color: var(--text-muted); 
+    text-align: center; 
+    padding: 20px; 
+    border-radius: 15px;
+    margin-top: 10px;
+    border: 1px solid #333;
+}
+
+/* --- PHOTOGRAPHY (GALLERY) --- */
+.photo-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+.photo-item {
+    flex: 1 1 250px;
+    max-width: 350px;
+    background: #252525; /* Σκούρο κουτί */
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease;
+    border: 1px solid #333;
+}
+
+.photo-item:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-color); /* Το περίγραμμα γίνεται μπλε στο hover */
+}
+
+.photo-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    opacity: 0.9; /* Ελαφρώς πιο σκοτεινή εικόνα */
+    transition: opacity 0.3s;
+}
+
+.photo-item:hover img {
+    opacity: 1; /* Φωτίζεται όταν περάσεις το ποντίκι */
+}
+
+.photo-item p {
+    padding: 15px;
+    margin: 0;
+    font-weight: bold;
+    color: var(--text-main);
+    text-align: center;
+}
+
+/* --- TABLES --- */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: #252525;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.data-table th, .data-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #444;
+}
+
+.data-table th {
+    background-color: #333;
+    color: var(--primary-color);
+    text-transform: uppercase;
+}
+
+.data-table tr:hover {
+    background-color: #333;
+}
+
+/* --- FORMS & BUTTONS --- */
+input[type="text"], 
+input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    background: #121212;
+    border: 1px solid #444;
+    color: white;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+input:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 5px rgba(41, 182, 246, 0.5);
+}
+
+button {
+    background-color: var(--primary-color);
+    color: #121212; /* Μαύρα γράμματα για αντίθεση με το ανοιχτό μπλε */
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    width: 100%;
+    transition: background 0.3s ease;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+/* --- UTILITIES --- */
 .hidden { display: none; }
 
-/* Responsive για κινητά */
+/* --- RESPONSIVE --- */
+@media (max-width: 992px) {
+    .container {
+        grid-template-columns: 220px 1fr;
+        padding: 10px;
+        gap: 15px;
+    }
+}
+
 @media (max-width: 600px) {
     .container {
         grid-template-areas: 
@@ -41,76 +262,18 @@ footer { grid-area: footer; background: #ffffff; color: rgb(66, 65, 65); text-al
             "main"
             "footer";
         grid-template-columns: 1fr;
-    }
-} 
-
-/* Flexbox για τις φωτογραφίες */
-.photo-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    justify-content: center;
-    padding: 20px;
-}
-
-.photo-item {
-    flex: 1 1 300px; /* Οι φωτογραφίες θα προσαρμόζονται */
-    max-width: 400px;
-    border: 2px solid #ddd;
-    text-align: center;
-    padding: 10px;
-}
-
-.photo-item img {
-    width: 100%;
-    height: auto;
-}
-
-/* --- Media Queries για Tablet --- */
-@media (max-width: 992px) {
-    .container {
-        grid-template-columns: 200px 1fr; /* Μικραίνουμε το πλευρικό μενού */
-    }
-}
-
-/* --- Media Queries για Κινητά --- */
-@media (max-width: 600px) {
-    .container {
-        grid-template-areas: 
-            "header"
-            "nav"
-            "aside"
-            "main"
-            "footer";
-        grid-template-columns: 1fr; /* Όλα σε μία στήλη */
+        gap: 15px;
     }
 
     .nav-menu li {
-        float: none; /* Το μενού γίνεται κάθετο */
+        float: none;
         width: 100%;
         text-align: center;
-        border-bottom: 1px solid #555;
+        border-bottom: 1px solid #333;
     }
-
+    
     aside {
-        border-bottom: 2px solid #ddd;
+        border-left: none;
+        border-top: 4px solid var(--primary-color);
     }
-}
-
-/* Στυλ για τον Πίνακα Δεδομένων */
-.data-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-.data-table th, .data-table td {
-    border: 1px solid #ddd;
-    padding: 12px;
-    text-align: left;
-}
-
-.data-table th {
-    background-color: #333;
-    color: white;
 }

@@ -1,7 +1,4 @@
-// Συνάρτηση για την εναλλαγή των ενοτήτων (SPA Logic)
 async function showSection(sectionId) {
-    // 1. Διαχείριση Πλευρικού Μενού (Aside)
-    // Κρύβουμε όλα τα υπομενού του aside
     const allAsideGroups = document.querySelectorAll('.aside-content');
     allAsideGroups.forEach(group => group.classList.add('hidden'));
 
@@ -38,29 +35,48 @@ async function showSection(sectionId) {
     }
 }
 
-// --- Στατικό Περιεχόμενο (Bio & Photos) ---
-
 function renderBio(container) {
     container.innerHTML = `
-        <h2>Βιογραφία</h2>
-        <p>Ο Μίλτος Τεντόγλου (Γρεβενά, 18 Μαρτίου 1998) είναι Έλληνας πρωταθλητής του άλματος εις μήκος...</p>
-        <p>Θεωρείται ένας από τους κορυφαίους αθλητές στην ιστορία του αγωνίσματος.</p>
+        <h2>Βιογραφία: Μίλτος Τεντόγλου</h2>
+        
+        <h3>Τα Πρώτα Χρόνια</h3>
+        <p>Ο Μίλτος Τεντόγλου γεννήθηκε στα Γρεβενά στις 18 Μαρτίου 1998. Ξεκίνησε τον αθλητισμό κάνοντας παρκούρ, κάτι που τον βοήθησε να αναπτύξει την εκρηκτικότητα και την αλτικότητά του.</p>
+        
+        <h3>Η Στροφή στον Στίβο</h3>
+        <p>Σε ηλικία 15 ετών, τον ανακάλυψε τυχαία ο προπονητής στίβου Βαγγέλης Παπανίκος, όταν τον είδε να κάνει άλματα στο στάδιο των Γρεβενών. Αμέσως κατάλαβε το ταλέντο του και τον έπεισε να ασχοληθεί με το μήκος.</p>
+
+        <h3>Παγκόσμια Καριέρα</h3>
+        <p>Σήμερα προπονείται με τον Γιώργο Πομάσκι. Έχει κατακτήσει το Χρυσό Μετάλλιο στους Ολυμπιακούς Αγώνες του Τόκιο (2020) και του Παρισιού (2024), ενώ είναι και Παγκόσμιος Πρωταθλητής.</p>
+        
+        <h3>Προσωπικά Ρεκόρ</h3>
+        <ul>
+            <li>Ανοιχτός Στίβος: 8.65μ</li>
+            <li>Κλειστός Στίβος: 8.55μ</li>
+        </ul>
     `;
 }
 
 function renderPhotos(container) {
-    // Χρήση Flexbox (ορίζεται στο CSS)
     container.innerHTML = `
         <h2>Φωτογραφίες</h2>
         <div class="photo-container">
-            <div class="photo-item"><img src="images/photo1.jpg" alt="Αγώνας 1"><p>Χρυσό στο Παρίσι</p></div>
-            <div class="photo-item"><img src="images/photo2.jpg" alt="Αγώνας 2"><p>Προπόνηση</p></div>
-            <div class="photo-item"><img src="images/photo3.jpg" alt="Αγώνας 3"><p>Απονομή</p></div>
+            <div class="photo-item">
+                <img src="https://cosmopoliti.com/wp-content/uploads/2024/08/Miltos-Tentoglou_Long-Jump-2.jpg" alt="Αγώνας 1">
+                <p>Χρυσό στο Παρίσι</p>
+            </div>
+            
+            <div class="photo-item">
+                <img src="https://www.newsit.gr/wp-content/uploads/2025/09/miltos-tentoglou1-scaled.jpg" alt="Προπόνηση">
+                <p>Προπόνηση</p>
+            </div>
+            
+            <div class="photo-item">
+                <img src="https://irunmag.gr/wp-content/uploads/2024/06/miltos-tentoglou-e1717993035390.jpg" alt="Απονομή">
+                <p>Απονομή</p>
+            </div>
         </div>
     `;
 }
-
-// --- Δυναμικό Περιεχόμενο (Fetch από JSON) ---
 
 async function fetchAndRenderTable(endpoint, title, container) {
     try {
@@ -74,8 +90,6 @@ async function fetchAndRenderTable(endpoint, title, container) {
 
         // Δημιουργία Πίνακα
         let html = `<h2>${title}</h2><table class="data-table"><thead><tr>`;
-        
-        // Δυναμικά headers από τα κλειδιά του JSON
         Object.keys(data[0]).forEach(key => {
             if(key !== 'id') html += `<th>${key.toUpperCase()}</th>`;
         });
@@ -96,8 +110,6 @@ async function fetchAndRenderTable(endpoint, title, container) {
         container.innerHTML = `<h2>Σφάλμα</h2><p>Αδυναμία φόρτωσης δεδομένων.</p>`;
     }
 }
-
-// --- Διαχείριση (Admin & Authentication) ---
 
 function renderAdmin(container) {
     container.innerHTML = `
