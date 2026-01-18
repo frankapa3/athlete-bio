@@ -1,12 +1,11 @@
-/* --- DARK THEME VARIABLES (Σκοτεινό Θέμα) --- */
 :root {
-    --primary-color: #29b6f6; /* Φωτεινό Γαλάζιο (Electric Blue) */
-    --accent-color: #0288d1;  /* Πιο σκούρο μπλε για hover */
-    --bg-color: #121212;      /* Πολύ σκούρο γκρι (σχεδόν μαύρο) για φόντο */
-    --card-bg: #1e1e1e;       /* Σκούρο γκρι για τις κάρτες/κουτιά */
-    --text-main: #e0e0e0;     /* Ανοιχτό γκρι για κείμενο (για να διαβάζεται) */
-    --text-muted: #b0b0b0;    /* Πιο απαλό γκρι για δευτερεύοντα κείμενα */
-    --shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Πιο έντονη σκιά για το dark mode */
+    --primary-color: #875af1e5;
+    --accent-color: #875af1b6;
+    --bg-color: #121212;     
+    --card-bg: #1e1e1e;    
+    --text-main: #e0e0e0;   
+    --text-muted: #b0b0b0;  
+    --shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 
 body {
@@ -18,7 +17,6 @@ body {
     line-height: 1.6;
 }
 
-/* --- LAYOUT --- */
 .container {
     display: grid;
     grid-template-areas: 
@@ -35,16 +33,15 @@ body {
     padding: 20px;
 }
 
-/* --- HEADER --- */
 header { 
     grid-area: header; 
-    background: var(--card-bg); /* Σκούρο φόντο */
-    color: var(--primary-color); /* Το κείμενο γίνεται μπλε */
+    background: var(--card-bg);
+    color: var(--primary-color);
     padding: 30px; 
     text-align: center; 
     border-radius: 15px;
     box-shadow: var(--shadow);
-    border: 1px solid #333; /* Λεπτό περίγραμμα για να ξεχωρίζει */
+    border: 1px solid #333;
 }
 
 header h1 {
@@ -52,7 +49,7 @@ header h1 {
     font-size: 2.5em;
     letter-spacing: 2px;
     text-transform: uppercase;
-    text-shadow: 0 0 10px rgba(41, 182, 246, 0.3); /* Λάμψη νέον στο κείμενο */
+    text-shadow: 0 0 10px rgba(41, 182, 246, 0.3);
 }
 
 /* --- NAVIGATION --- */
@@ -78,11 +75,10 @@ nav {
 
 .nav-menu li a:hover {
     background-color: var(--primary-color);
-    color: #121212; /* Μαύρα γράμματα στο hover για αντίθεση */
-    box-shadow: 0 0 15px var(--primary-color); /* Εφέ λάμψης */
+    color: #121212;
+    box-shadow: 0 0 15px var(--primary-color);
 }
 
-/* --- ASIDE & MAIN --- */
 aside { 
     grid-area: aside; 
     background: var(--card-bg); 
@@ -90,7 +86,7 @@ aside {
     border-radius: 15px;
     box-shadow: var(--shadow);
     border: 1px solid #333;
-    border-left: 4px solid var(--primary-color); /* Μπλε γραμμή αριστερά */
+    border-left: 4px solid var(--primary-color);
 }
 
 main { 
@@ -103,17 +99,16 @@ main {
 }
 
 h2, h3 {
-    color: var(--primary-color); /* Όλοι οι τίτλοι γίνονται γαλάζιοι */
+    color: var(--primary-color); 
 }
 
-/* Στυλ για τα στοιχεία του Aside */
 .aside-content h3 {
     border-bottom: 1px solid #444;
     padding-bottom: 10px;
 }
 
 .aside-content p {
-    background-color: #252525; /* Λίγο πιο ανοιχτό από το φόντο */
+    background-color: #252525;
     padding: 10px;
     border-radius: 8px;
     border-left: 3px solid #555;
@@ -144,7 +139,7 @@ footer {
 .photo-item {
     flex: 1 1 250px;
     max-width: 350px;
-    background: #252525; /* Σκούρο κουτί */
+    background: #252525;
     border-radius: 15px;
     overflow: hidden;
     box-shadow: var(--shadow);
@@ -154,19 +149,18 @@ footer {
 
 .photo-item:hover {
     transform: translateY(-5px);
-    border-color: var(--primary-color); /* Το περίγραμμα γίνεται μπλε στο hover */
+    border-color: var(--primary-color);
 }
 
 .photo-item img {
     width: 100%;
     height: 200px;
     object-fit: cover;
-    opacity: 0.9; /* Ελαφρώς πιο σκοτεινή εικόνα */
+    opacity: 0.9;
     transition: opacity 0.3s;
 }
-
 .photo-item:hover img {
-    opacity: 1; /* Φωτίζεται όταν περάσεις το ποντίκι */
+    opacity: 1;
 }
 
 .photo-item p {
@@ -177,7 +171,6 @@ footer {
     text-align: center;
 }
 
-/* --- TABLES --- */
 .data-table {
     width: 100%;
     border-collapse: collapse;
@@ -203,7 +196,6 @@ footer {
     background-color: #333;
 }
 
-/* --- FORMS & BUTTONS --- */
 input[type="text"], 
 input[type="password"] {
     width: 100%;
@@ -219,12 +211,12 @@ input[type="password"] {
 input:focus {
     border-color: var(--primary-color);
     outline: none;
-    box-shadow: 0 0 5px rgba(41, 182, 246, 0.5);
+    box-shadow: 0 0 5px rgba(103, 110, 172, 0.795);
 }
 
 button {
     background-color: var(--primary-color);
-    color: #121212; /* Μαύρα γράμματα για αντίθεση με το ανοιχτό μπλε */
+    color: #121212;
     padding: 12px 20px;
     border: none;
     border-radius: 8px;
@@ -241,10 +233,8 @@ button:hover {
     color: white;
 }
 
-/* --- UTILITIES --- */
 .hidden { display: none; }
 
-/* --- RESPONSIVE --- */
 @media (max-width: 992px) {
     .container {
         grid-template-columns: 220px 1fr;
